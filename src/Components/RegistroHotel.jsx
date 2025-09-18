@@ -114,8 +114,8 @@ export default function RegistroHotel(){
                 </div>
 
                 <div className="navegacion">
-                    <button type="button">🡄</button>
-                    <button type="button">🡆</button>
+                    <button type="button">←</button>
+                    <button type="button">→</button>
                 </div>
 
                 <div className="acciones">

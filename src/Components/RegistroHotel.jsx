@@ -36,9 +36,21 @@ export default function RegistroHotel(){
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleRegistrar = () => {
+    const handleRegistrar = (e) => {
+        e.preventDefault();
         if (validar()) {
             alert("Registro exitoso");
+            // Reiniciar el formulario
+            setFormData({
+                identificacion: "",
+                nombres: "",
+                apellidos: "",
+                telefono: "",
+                habitacion: "",
+                rh: "O+",
+                fechaIngreso: "",
+                fechaSalida: "",
+            });
         }else {
             alert("Por favor, complete todos los campos");
         }
@@ -80,7 +92,9 @@ export default function RegistroHotel(){
                 {errors.apellidos && <span className="error">{errors.apellidos}</span>}
 
                 <label htmlFor="telefono">Teléfono:</label>
-                <input id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} />
+                <input id="telefono" name="telefono" value={formData.telefono} onChange={(e)=> {const soloNumeros = e.target.value.replace(/\D/g,"");
+                setFormData({...formData, telefono: soloNumeros});
+                }} />
                 {errors.telefono && <span className="error">{errors.telefono}</span>}
 
                 <label htmlFor="habitacion">Habitación:</label>
